@@ -12,18 +12,52 @@ struct ContentView: View {
     
     @State private var showingSheet = false
     @State private var alert = false
+    @State private var offset = CGSize.zero
     @ObservedObject var fileManager = FilesManager(service: Service())
+    @GestureState private var isDragging = false
+    
+    private let player = Player.shared
+    
+    var drag: some Gesture {
+        DragGesture().onChanged { changed in
+            print("offset \(offset)")
+            offset = changed.translation
+            print("changed to \(changed.translation)")
+        }
+        .onEnded { onEnded in
+            offset = onEnded.translation
+        }
+        .updating($isDragging) { (changed, state, transaction) in
+            //print(changed)
+            //print(state)
+            //print((transaction))
+        }
+    }
     
     var body: some View {
         NavigationView {
-            TabView {
-                FilesView(files: self.fileManager.files)
+            GeometryReader { geo in
+                TabView {
+                    ZStack {
+                        FilesView(files: self.fileManager.files, player: Player.shared) { idx in
+                            self.onDeleteFiles(index: idx)
+                        }
+                        MiniPlayerView(playPause: {},
+                                       back: {},
+                                       forward: {})
+                            .offset(offset)
+                            .gesture(drag)
+                            .onAppear {
+                                        offset = CGSize(width: (geo.size.width / 3.5), height: (geo.size.height / 2.5))
+                                    }
+                    }
+                }
             }
             .navigationBarTitle("Your Files", displayMode: .large)
             .navigationBarItems(trailing:
-                                    Button(action: { self.showingSheet = true }, label: {
-                Image(systemName: "plus.circle")
-            }))
+                                    Button(action:
+                                            { self.showingSheet = true },
+                                           label: { Image(systemName: "plus.circle") }))
         }
         .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("Add your files"), message: nil, buttons: [.default(Text("Download a file from URL"), action: {
@@ -41,6 +75,10 @@ struct ContentView: View {
         }
     }
     
+    func onDeleteFiles(index: Int) {
+        self.fileManager.deleteFilesAt(index: index)
+    }
+    
     func download(fileURL: String) {
         if let url = URL(string: fileURL) {
             if url.pathExtension == "mp3" {
@@ -51,6 +89,7 @@ struct ContentView: View {
         } else {
             self.alert.toggle()
         }
+
     }
     
     func fetchFiles() {
@@ -65,5 +104,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 11 Pro Max")
     }
 }
