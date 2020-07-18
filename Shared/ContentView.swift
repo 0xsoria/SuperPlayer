@@ -15,6 +15,9 @@ struct ContentView: View {
     @State private var offset = CGSize.zero
     @ObservedObject var fileManager = FilesManager(service: Service())
     @GestureState private var isDragging = false
+    @State private var showingBottomSheet = false
+    @ObservedObject var downloader = Downloader()
+    @State var isDownloading = false
     
     private let player = Player.shared
     
@@ -48,21 +51,46 @@ struct ContentView: View {
                             .offset(offset)
                             .gesture(drag)
                             .onAppear {
-                                        offset = CGSize(width: (geo.size.width / 3.5), height: (geo.size.height / 2.5))
-                                    }
+                                offset = CGSize(width: (geo.size.width / 3.5),
+                                                height: (geo.size.height / 2.5))
+                            }
+                        BottomSheetView(isDownloading: $isDownloading, isOpen: self.$showingBottomSheet,
+                                        maxHeight: geo.size.height * 0.2) {
+                            ActiveDownloadsView(downloads:
+                                                    self.downloader.downloadsInProgress) {
+                                if self.downloader.downloadsInProgress.isEmpty { self.isDownloading = false
+                                }
+                            }
+                        }
                     }
                 }
             }
             .navigationBarTitle("Your Files", displayMode: .large)
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading:
+                                    Button(action: {
+                                        if self.downloader.downloadsInProgress.isEmpty {
+                                            self.showingBottomSheet.toggle()
+                                        }
+                                    }, label: {
+                                        Image(systemName: "square.and.arrow.down")
+                                    })
+                                
+                                , trailing:
                                     Button(action:
-                                            { self.showingSheet = true },
+                                            {
+                                                self.showingSheet = true
+                                                if self.showingBottomSheet {
+                                                    self.showingBottomSheet.toggle()
+                                                }
+                                            },
                                            label: { Image(systemName: "plus.circle") }))
         }
         .actionSheet(isPresented: $showingSheet) {
             ActionSheet(title: Text("Add your files"), message: nil, buttons: [.default(Text("Download a file from URL"), action: {
                 self.showAlertWithTextField(with: "Download your audio file", message: nil, placeholder: "File URL", actionTitle: "Download", cancelTitle: "Cancel") { url in
                     self.download(fileURL: url)
+                    self.showingBottomSheet.toggle()
+                    self.isDownloading = true
                 }
             }), .cancel(Text("Cancel"))])
         }
@@ -80,16 +108,17 @@ struct ContentView: View {
     }
     
     func download(fileURL: String) {
+        self.downloader.filesManager = self.fileManager
         if let url = URL(string: fileURL) {
             if url.pathExtension == "mp3" {
-                self.fileManager.downloadFileFromService(urlString: fileURL)
+                self.downloader.downloadFileFromService(urlString: fileURL)
             } else {
                 self.alert.toggle()
             }
         } else {
             self.alert.toggle()
         }
-
+        
     }
     
     func fetchFiles() {

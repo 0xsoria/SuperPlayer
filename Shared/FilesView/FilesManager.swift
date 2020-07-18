@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 protocol FilesProtocol {
-    var files: [URL] { get set }
+    var files: [Track] { get set }
     
-    func loadFile(at index: Int) -> URL?
+    func loadFile(at index: Int) -> Track?
     func loadFiles()
     func deleteFilesAt(index: Int)
     func saveFile(url: URL, fileName: String)
@@ -20,13 +20,14 @@ protocol FilesProtocol {
 
 final class FilesManager: ObservableObject, FilesProtocol {
     
-    @Published var files: [URL] = [] {
+    @Published var files: [Track] = [] {
         didSet {
             didChange.send(self)
         }
     }
     var service: ServiceProtocol
     var didChange = PassthroughSubject<FilesManager, Never>()
+    @Published var downloadsInProgress: [Download] = []
     
     init(service: ServiceProtocol) {
         self.service = service
@@ -39,7 +40,7 @@ final class FilesManager: ObservableObject, FilesProtocol {
         return url
     }
     
-    func loadFile(at index: Int) -> URL? {
+    func loadFile(at index: Int) -> Track? {
         self.loadFiles()
         guard self.files.count >= index else { return nil }
         let file = self.files[index]
@@ -51,7 +52,9 @@ final class FilesManager: ObservableObject, FilesProtocol {
         do {
             guard let url = urls else { return }
             let returnData = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            self.files = returnData
+            self.files = returnData.map {
+                Track(name: $0.lastPathComponent, artist: String(), url: $0)
+            }
         } catch {
             self.files = []
         }
@@ -98,21 +101,44 @@ final class FilesManager: ObservableObject, FilesProtocol {
     }
     
     func downloadFileFromService(urlString: String) {
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else {
+            //not valid url 
+            return
+        }
         self.service.fileDownloader(from: urlString, with: url.lastPathComponent)
     }
 }
 
 extension FilesManager: ServiceDelegate {
-    func didStartDownloadingFile(_ service: ServiceProtocol) {
-        print("started")
+    func didStartDownloadingFile(_ file: Download) {
+        self.downloadsInProgress.insert(file, at: 0)
     }
     
-    func didFinishDownloadingFile(to url: URL, temporaryLocation: String, withName: String, _ service: ServiceProtocol) {
+    func didFinishDownloadingFile(to url: URL, temporaryLocation: String, withName: String, _ file: Download?) {
         self.saveFile(url: url, fileName: temporaryLocation)
+        let fileToBeDeleted = self.downloadsInProgress.firstIndex { item in
+            item.track == file?.track
+        }
+        if let idx = fileToBeDeleted {
+            self.downloadsInProgress.remove(at: idx)
+            self.saveFile(url: url, fileName: temporaryLocation)
+        }
     }
     
-    func didStartDownloading(_ service: ServiceProtocol, bytesNowWritten: Int64, totalWritten: Int64, totalToBeWritten: Int64) {
-        print("just wrote \(bytesNowWritten) total wrote \(totalWritten) to be written \(totalToBeWritten)")
+    func downloadInProgress(_ file: Download, bytesNowWritten: Int64, totalWritten: Int64, totalToBeWritten: Int64) {
+        print(bytesNowWritten)
+        let fileToBeUpdated = self.downloadsInProgress.firstIndex { item in
+            item.track == file.track
+        }
+        
+        if let idx = fileToBeUpdated {
+            let item = self.downloadsInProgress[idx]
+            item.isDownloading = file.isDownloading
+            item.progress = file.progress
+            item.resumeData = file.resumeData
+            item.task = file.task
+            item.track = file.track
+            self.downloadsInProgress[idx] = item
+        }
     }
 }

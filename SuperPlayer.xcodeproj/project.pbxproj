@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150B84F524BFD32200605593 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150B84F424BFD32200605593 /* Downloader.swift */; };
+		1516C73C24BBD2C0008E69DB /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1516C73B24BBD2C0008E69DB /* BottomSheetView.swift */; };
+		1516C73F24BBDB96008E69DB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1516C73E24BBDB96008E69DB /* Track.swift */; };
+		1516C74124BBDBA5008E69DB /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1516C74024BBDBA5008E69DB /* Download.swift */; };
 		1517BD5824A81EAB00991BE5 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517BD5724A81EAB00991BE5 /* View+Extension.swift */; };
 		1517BD5924A81EAB00991BE5 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517BD5724A81EAB00991BE5 /* View+Extension.swift */; };
 		1535FB8E24AC26CC008F1BE3 /* AudioMachine in Frameworks */ = {isa = PBXBuildFile; productRef = 1535FB8D24AC26CC008F1BE3 /* AudioMachine */; };
@@ -20,6 +24,8 @@
 		153AA93624A2DCAD005BDBA1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AA93424A2DCAD005BDBA1 /* Player.swift */; };
 		1583C89B24AD5BFA004108FD /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */; };
 		1583C89C24AD5BFA004108FD /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */; };
+		15AE6DE424BA188B00079CFD /* ActiveDownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */; };
+		15AE6DE624BA286600079CFD /* DownloadProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE6DE524BA286600079CFD /* DownloadProgress.swift */; };
 		15B1307624A7C2B500DC5D4B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307524A7C2B500DC5D4B /* PlayerView.swift */; };
 		15B1307724A7C2B500DC5D4B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307524A7C2B500DC5D4B /* PlayerView.swift */; };
 		15B1307924A7C40600DC5D4B /* FilesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307824A7C40600DC5D4B /* FilesRow.swift */; };
@@ -56,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150B84F424BFD32200605593 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		1516C73B24BBD2C0008E69DB /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		1516C73E24BBDB96008E69DB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		1516C74024BBDBA5008E69DB /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		1517BD5724A81EAB00991BE5 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		1535FB8B24AC2674008F1BE3 /* AudioMachine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AudioMachine; path = ../../AudioMachine; sourceTree = "<group>"; };
 		1535FB8F24AC2877008F1BE3 /* iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -64,6 +74,8 @@
 		153AA92E24A19FE4005BDBA1 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		153AA93424A2DCAD005BDBA1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
+		15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveDownloadsView.swift; sourceTree = "<group>"; };
+		15AE6DE524BA286600079CFD /* DownloadProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgress.swift; sourceTree = "<group>"; };
 		15B1307124A7AF7D00DC5D4B /* SuperPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperPlayer.entitlements; sourceTree = "<group>"; };
 		15B1307524A7C2B500DC5D4B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		15B1307824A7C40600DC5D4B /* FilesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesRow.swift; sourceTree = "<group>"; };
@@ -118,6 +130,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1516C73D24BBDB8A008E69DB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				153AA92E24A19FE4005BDBA1 /* Service.swift */,
+				1516C73E24BBDB96008E69DB /* Track.swift */,
+				1516C74024BBDBA5008E69DB /* Download.swift */,
+				150B84F424BFD32200605593 /* Downloader.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1535FB8C24AC26CC008F1BE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,9 +153,9 @@
 			children = (
 				15F0020824A18FF30039810A /* FilesView.swift */,
 				153AA92B24A19504005BDBA1 /* FilesManager.swift */,
-				153AA92E24A19FE4005BDBA1 /* Service.swift */,
 				15B1307824A7C40600DC5D4B /* FilesRow.swift */,
 				15B1307B24A7C66F00DC5D4B /* FilesList.swift */,
+				15AE6DE524BA286600079CFD /* DownloadProgress.swift */,
 			);
 			path = FilesView;
 			sourceTree = "<group>";
@@ -174,12 +197,15 @@
 				1535FB8B24AC2674008F1BE3 /* AudioMachine */,
 				15F001C824A18E550039810A /* SuperPlayerApp.swift */,
 				15F001C924A18E550039810A /* ContentView.swift */,
+				1516C73D24BBDB8A008E69DB /* Service */,
+				1516C73B24BBD2C0008E69DB /* BottomSheetView.swift */,
 				15F001CA24A18E5B0039810A /* Assets.xcassets */,
 				153AA92A24A194EF005BDBA1 /* FilesView */,
 				1548F2FF24AC2AD500757444 /* Player */,
 				1548F2FE24AC2AC900757444 /* View+Extension */,
 				1535FB9124AC2877008F1BE3 /* Bridge.m */,
 				1535FB8F24AC2877008F1BE3 /* iOS-Bridging-Header.h */,
+				15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -399,11 +425,17 @@
 				15F001F324A18E5C0039810A /* ContentView.swift in Sources */,
 				15F001F124A18E5C0039810A /* SuperPlayerApp.swift in Sources */,
 				1517BD5824A81EAB00991BE5 /* View+Extension.swift in Sources */,
+				15AE6DE424BA188B00079CFD /* ActiveDownloadsView.swift in Sources */,
 				15B1307624A7C2B500DC5D4B /* PlayerView.swift in Sources */,
+				15AE6DE624BA286600079CFD /* DownloadProgress.swift in Sources */,
 				1535FB9224AC2877008F1BE3 /* Bridge.m in Sources */,
+				1516C74124BBDBA5008E69DB /* Download.swift in Sources */,
 				153AA92F24A19FE4005BDBA1 /* Service.swift in Sources */,
 				15B1307C24A7C66F00DC5D4B /* FilesList.swift in Sources */,
 				15B1307924A7C40600DC5D4B /* FilesRow.swift in Sources */,
+				1516C73F24BBDB96008E69DB /* Track.swift in Sources */,
+				1516C73C24BBD2C0008E69DB /* BottomSheetView.swift in Sources */,
+				150B84F524BFD32200605593 /* Downloader.swift in Sources */,
 				15F0020924A18FF30039810A /* FilesView.swift in Sources */,
 				153AA93524A2DCAD005BDBA1 /* Player.swift in Sources */,
 				153AA92C24A19504005BDBA1 /* FilesManager.swift in Sources */,
@@ -582,6 +614,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOS/SuperPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H929RNU2C4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -608,6 +641,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOS/SuperPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H929RNU2C4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

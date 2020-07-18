@@ -9,11 +9,11 @@ import SwiftUI
 
 struct FilesList: View {
     
-    let files: [URL]
+    let files: [Track]
     var onDelete: ((Int) -> Void)?
     let player: Play
     
-    init(files: [URL], onDelete: ((Int) -> Void)?, player: Play) {
+    init(files: [Track], onDelete: ((Int) -> Void)?, player: Play) {
         self.files = files
         self.onDelete = onDelete
         self.player = player
@@ -22,8 +22,8 @@ struct FilesList: View {
     var body: some View {
         List {
             ForEach(self.files, id: \.self) { item in
-                NavigationLink(destination: PlayerView(file: item, player: self.player)) {
-                    FilesRow(fileName: "\(item.lastPathComponent)")
+                NavigationLink(destination: PlayerView(file: item.url, player: self.player)) {
+                    FilesRow(fileName: item.name)
                 }
             }.onDelete { idx in
                 self.delete(index: idx)
@@ -43,6 +43,10 @@ struct FilesList: View {
 
 struct FilesList_Previews: PreviewProvider {
     static var previews: some View {
-        FilesList(files: [URL(string: "www.apple.com")!], onDelete: nil, player: Player.shared)
+        FilesList(files: [Track(name: "atp.mp3",
+                                artist: "atp",
+                                url: URL(string: "")!)],
+                  onDelete: nil,
+                  player: Player.shared)
     }
 }
