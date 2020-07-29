@@ -5,15 +5,19 @@
 //  Created by Gabriel Soria Souza on 27/06/20.
 //
 
+import AudioMachine
 import SwiftUI
 
 struct PlayerView: View {
     
     private let player: Play
+    private let file: URL
+    private let amPlayer = AMAudioPlayer()
     
     init(file: URL, player: Play) {
         self.player = player
-        self.setupFile(with: file)
+        self.file = file
+        //self.setupFile(with: file)
     }
     
     var body: some View {
@@ -27,11 +31,11 @@ struct PlayerView: View {
     }
     
     func setupFile(with url: URL) {
-        self.player.setAudioFile(url: url)
+        //self.player.setAudioFile(url: url)
     }
     
     func playPause() {
-        self.player.playPause()
+        self.amPlayer.audioFileSetup(self.file)
     }
 }
 

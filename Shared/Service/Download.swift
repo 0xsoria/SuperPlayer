@@ -12,7 +12,7 @@ import SwiftUI
 final class Download: Equatable, Hashable, Identifiable, ObservableObject {
     
     var isDownloading = false
-    @Published var progress: Float = 0
+    var progress: Float = 0
     var resumeData: Data?
     var task: URLSessionDownloadTask?
     var track: Track

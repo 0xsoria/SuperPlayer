@@ -35,6 +35,3 @@ struct ActiveDownloadsView_Previews: PreviewProvider {
         ActiveDownloadsView(downloads: [])
     }
 }
-
-
-

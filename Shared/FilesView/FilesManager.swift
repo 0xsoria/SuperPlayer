@@ -25,14 +25,9 @@ final class FilesManager: ObservableObject, FilesProtocol {
             didChange.send(self)
         }
     }
-    var service: ServiceProtocol
     var didChange = PassthroughSubject<FilesManager, Never>()
     @Published var downloadsInProgress: [Download] = []
-    
-    init(service: ServiceProtocol) {
-        self.service = service
-        self.service.delegate = self
-    }
+    private let service = DownloadService()
     
     private func userFolder() -> [URL] {
         let filesManager = FileManager.default
@@ -85,9 +80,9 @@ final class FilesManager: ObservableObject, FilesProtocol {
         guard let urlPath = self.userFolder().first else { return }
         
         do {
+            let newURL = urlPath.appendingPathComponent(fileName)
             let fileData = try Data(contentsOf: url)
-            let url = urlPath.appendingPathComponent(fileName)
-            fm.createFile(atPath: url.path, contents: fileData, attributes: nil)
+            fm.createFile(atPath: newURL.path, contents: fileData, attributes: nil)
             
             DispatchQueue.main.async {
                 self.loadFiles()
@@ -105,6 +100,7 @@ final class FilesManager: ObservableObject, FilesProtocol {
             //not valid url 
             return
         }
+        self.service.delegate = self
         self.service.fileDownloader(from: urlString, with: url.lastPathComponent)
     }
 }
@@ -120,8 +116,8 @@ extension FilesManager: ServiceDelegate {
             item.track == file?.track
         }
         if let idx = fileToBeDeleted {
-            self.downloadsInProgress.remove(at: idx)
-            self.saveFile(url: url, fileName: temporaryLocation)
+            //self.downloadsInProgress.remove(at: idx)
+            //self.saveFile(url: url, fileName: temporaryLocation)
         }
     }
     

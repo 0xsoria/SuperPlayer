@@ -27,6 +27,7 @@ final class Player: NSObject, Play {
     
     func setAudioFile(url: URL) {
         self.player = AMAudioPlayer(audioFileURL: url)
+        self.player?.audioFileSetup(url)
         self.player?.delegate = self
     }
     
