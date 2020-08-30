@@ -11,7 +11,7 @@ import SwiftUI
 struct FilesView: View {
     
     var files: [Track] = []
-    let player: Play
+    let player: Player
     var onDelete: ((Int) -> Void)?
     
     var body: some View {

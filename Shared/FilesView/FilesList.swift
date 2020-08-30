@@ -11,9 +11,9 @@ struct FilesList: View {
     
     let files: [Track]
     var onDelete: ((Int) -> Void)?
-    let player: Play
+    let player: Player
     
-    init(files: [Track], onDelete: ((Int) -> Void)?, player: Play) {
+    init(files: [Track], onDelete: ((Int) -> Void)?, player: Player) {
         self.files = files
         self.onDelete = onDelete
         self.player = player

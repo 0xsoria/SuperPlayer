@@ -8,6 +8,8 @@
 import AudioMachine
 
 protocol Play {
+	var currentPosition: Float { get }
+	
     func setAudioFile(url: URL)
     func getLenghtOfFile() -> Float?
     func playPause()
@@ -16,15 +18,16 @@ protocol Play {
     func seek(to time: Float)
 }
 
-final class Player: NSObject, Play {
+final class Player: NSObject, Play, ObservableObject {
 
     static let shared = Player()
     private var player: AMAudioPlayer?
-    
+	@Published var currentPosition: Float = 0.0
+	
     private override init() {
         //play
     }
-    
+	
     func setAudioFile(url: URL) {
         self.player = AMAudioPlayer(audioFileURL: url)
         self.player?.audioFileSetup(url)
@@ -67,7 +70,7 @@ final class Player: NSObject, Play {
 
 extension Player: AMAudioPlayerDelegate {
     func progressUpdate(withCurrentPosition currentPosition: Float) {
-        
+		self.currentPosition = currentPosition
     }
     
     func countdownUp(withTime time: String) {

@@ -21,6 +21,8 @@
 		153AA93624A2DCAD005BDBA1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AA93424A2DCAD005BDBA1 /* Player.swift */; };
 		1583C89B24AD5BFA004108FD /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */; };
 		1583C89C24AD5BFA004108FD /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */; };
+		158CBF2A24FAB31F00CC5A2C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */; };
+		158CBF2B24FAB31F00CC5A2C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */; };
 		15AE6DE424BA188B00079CFD /* ActiveDownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */; };
 		15AE6DE624BA286600079CFD /* DownloadProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE6DE524BA286600079CFD /* DownloadProgress.swift */; };
 		15B1307624A7C2B500DC5D4B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307524A7C2B500DC5D4B /* PlayerView.swift */; };
@@ -29,6 +31,10 @@
 		15B1307A24A7C40600DC5D4B /* FilesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307824A7C40600DC5D4B /* FilesRow.swift */; };
 		15B1307C24A7C66F00DC5D4B /* FilesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307B24A7C66F00DC5D4B /* FilesList.swift */; };
 		15B1307D24A7C66F00DC5D4B /* FilesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307B24A7C66F00DC5D4B /* FilesList.swift */; };
+		15ECAB3C24DEE46000CBFF0E /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB3B24DEE45F00CBFF0E /* Asset.swift */; };
+		15ECAB3E24DEE4A300CBFF0E /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB3D24DEE4A300CBFF0E /* Stream.swift */; };
+		15ECAB4024DEE67F00CBFF0E /* AssetPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB3F24DEE67F00CBFF0E /* AssetPersistenceManager.swift */; };
+		15ECAB4224DEF15700CBFF0E /* StreamListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB4124DEF15700CBFF0E /* StreamListManager.swift */; };
 		15F001E424A18E5C0039810A /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F001E324A18E5C0039810A /* Tests_iOS.swift */; };
 		15F001EF24A18E5C0039810A /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F001EE24A18E5C0039810A /* Tests_macOS.swift */; };
 		15F001F124A18E5C0039810A /* SuperPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F001C824A18E550039810A /* SuperPlayerApp.swift */; };
@@ -70,12 +76,17 @@
 		153AA92B24A19504005BDBA1 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		153AA93424A2DCAD005BDBA1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
+		158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveDownloadsView.swift; sourceTree = "<group>"; };
 		15AE6DE524BA286600079CFD /* DownloadProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadProgress.swift; sourceTree = "<group>"; };
 		15B1307124A7AF7D00DC5D4B /* SuperPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperPlayer.entitlements; sourceTree = "<group>"; };
 		15B1307524A7C2B500DC5D4B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		15B1307824A7C40600DC5D4B /* FilesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesRow.swift; sourceTree = "<group>"; };
 		15B1307B24A7C66F00DC5D4B /* FilesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesList.swift; sourceTree = "<group>"; };
+		15ECAB3B24DEE45F00CBFF0E /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		15ECAB3D24DEE4A300CBFF0E /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		15ECAB3F24DEE67F00CBFF0E /* AssetPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPersistenceManager.swift; sourceTree = "<group>"; };
+		15ECAB4124DEF15700CBFF0E /* StreamListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamListManager.swift; sourceTree = "<group>"; };
 		15F001C824A18E550039810A /* SuperPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPlayerApp.swift; sourceTree = "<group>"; };
 		15F001C924A18E550039810A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		15F001CA24A18E5B0039810A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,8 +142,12 @@
 			isa = PBXGroup;
 			children = (
 				1516C73E24BBDB96008E69DB /* Track.swift */,
+				15ECAB3B24DEE45F00CBFF0E /* Asset.swift */,
 				1516C74024BBDBA5008E69DB /* Download.swift */,
 				56AAF1A324CCC28200956267 /* DownloadService.swift */,
+				15ECAB3D24DEE4A300CBFF0E /* Stream.swift */,
+				15ECAB3F24DEE67F00CBFF0E /* AssetPersistenceManager.swift */,
+				15ECAB4124DEF15700CBFF0E /* StreamListManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -170,6 +185,7 @@
 				153AA93424A2DCAD005BDBA1 /* Player.swift */,
 				15B1307524A7C2B500DC5D4B /* PlayerView.swift */,
 				1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */,
+				158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -186,6 +202,7 @@
 				1535FB8C24AC26CC008F1BE3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		15F001C724A18E550039810A /* Shared */ = {
 			isa = PBXGroup;
@@ -417,17 +434,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15ECAB3C24DEE46000CBFF0E /* Asset.swift in Sources */,
 				1583C89B24AD5BFA004108FD /* MiniPlayerView.swift in Sources */,
 				15F001F324A18E5C0039810A /* ContentView.swift in Sources */,
 				15F001F124A18E5C0039810A /* SuperPlayerApp.swift in Sources */,
 				1517BD5824A81EAB00991BE5 /* View+Extension.swift in Sources */,
+				15ECAB3E24DEE4A300CBFF0E /* Stream.swift in Sources */,
 				15AE6DE424BA188B00079CFD /* ActiveDownloadsView.swift in Sources */,
 				56AAF1A424CCC28200956267 /* DownloadService.swift in Sources */,
+				15ECAB4024DEE67F00CBFF0E /* AssetPersistenceManager.swift in Sources */,
 				15B1307624A7C2B500DC5D4B /* PlayerView.swift in Sources */,
 				15AE6DE624BA286600079CFD /* DownloadProgress.swift in Sources */,
 				1535FB9224AC2877008F1BE3 /* Bridge.m in Sources */,
+				158CBF2A24FAB31F00CC5A2C /* ProgressBar.swift in Sources */,
 				1516C74124BBDBA5008E69DB /* Download.swift in Sources */,
 				15B1307C24A7C66F00DC5D4B /* FilesList.swift in Sources */,
+				15ECAB4224DEF15700CBFF0E /* StreamListManager.swift in Sources */,
 				15B1307924A7C40600DC5D4B /* FilesRow.swift in Sources */,
 				1516C73F24BBDB96008E69DB /* Track.swift in Sources */,
 				1516C73C24BBD2C0008E69DB /* BottomSheetView.swift in Sources */,
@@ -451,6 +473,7 @@
 				15B1307A24A7C40600DC5D4B /* FilesRow.swift in Sources */,
 				15F0020A24A18FF30039810A /* FilesView.swift in Sources */,
 				153AA93624A2DCAD005BDBA1 /* Player.swift in Sources */,
+				158CBF2B24FAB31F00CC5A2C /* ProgressBar.swift in Sources */,
 				153AA92D24A19504005BDBA1 /* FilesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

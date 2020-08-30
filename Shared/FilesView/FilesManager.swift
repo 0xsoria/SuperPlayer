@@ -25,7 +25,7 @@ final class FilesManager: ObservableObject, FilesProtocol {
             didChange.send(self)
         }
     }
-    var didChange = PassthroughSubject<FilesManager, Never>()
+    private var didChange = PassthroughSubject<FilesManager, Never>()
     @Published var downloadsInProgress: [Download] = []
     private let service = DownloadService()
     
