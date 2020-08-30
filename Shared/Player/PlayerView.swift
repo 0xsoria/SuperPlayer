@@ -10,8 +10,8 @@ import SwiftUI
 struct PlayerView: View {
 	
 	@ObservedObject var player: Player
+	@State var rateValue: Float = 1.0
 	private let file: URL
-	@State var progressValue: Float =  0.0
 	
 	init(file: URL, player: Player) {
 		self.player = player
@@ -32,7 +32,15 @@ struct PlayerView: View {
 				Button(action: {
 					self.playPause()
 				}, label: {
-					Image(systemName: "play.fill").resizable().aspectRatio(contentMode: .fit)
+					Image(systemName: "play.fill")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.foregroundColor(.black)
+				}).frame(width: 50, height: 50, alignment: .center)
+				Button(action: self.stopPlayback, label: {
+					Image(systemName: "stop.fill")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
 						.foregroundColor(.black)
 				}).frame(width: 50, height: 50, alignment: .center)
 				Button(action: {
@@ -47,7 +55,23 @@ struct PlayerView: View {
 				self.setupFile(with: file)
 			})
 			ProgressBar(value: self.player.currentPosition).frame(height: 20)
+			HStack {
+				Text(self.player.timePlayed)
+				Spacer()
+				Text(self.player.timeRemaining)
+			}
+			Slider(value: $rateValue, in: 0.5...3.0, step: 0.25) { _  in
+				self.player.rateValue = rateValue
+			}
+			Text(String(format: "Playback speed: %.2fx", self.rateValue))
 		}.padding()
+		.onAppear() {
+			self.rateValue = self.player.initialRateValue
+		}
+	}
+	
+	private func stopPlayback() {
+		self.player.stop()
 	}
 	
 	private func backTenSeconds() {
