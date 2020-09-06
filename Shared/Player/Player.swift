@@ -25,6 +25,7 @@ final class Player: NSObject, Play, ObservableObject {
 	@Published var currentPosition: Float = 0.0
 	@Published var timePlayed = "0:00"
 	@Published var timeRemaining = "0:00"
+	@Published var metadataContent = [MetadataContent]()
 	var rateValue: Float = 1.0 {
 		didSet {
 			self.player?.rateValue = rateValue
@@ -34,10 +35,34 @@ final class Player: NSObject, Play, ObservableObject {
 	var initialRateValue: Float {
 		return self.player?.rateValue ?? 1.0
 	}
+	private let metadata = AMMetadata()
 	
     private override init() {
         //play
     }
+	
+	func updaterToggle() {
+		self.player?.updaterPauseToggle()
+	}
+	
+	func showMetadata() {
+		if let url = self.player?.fileURL {
+			let data = self.metadata.getFileMetadata(atURLString: url.absoluteString) as? [String: String]
+			
+			guard let metadata = data else { return }
+			//self.metadataContent = self.parseMetadataContent(content: metadata)
+			//return
+		}
+		self.metadataContent = []
+	}
+	
+	private func parseMetadataContent(content: [String: String]) -> [MetadataContent] {
+		var temp = [MetadataContent]()
+		for i in content {
+			temp.append(MetadataContent(key: i.key, value: i.value))
+		}
+		return temp
+	}
 	
     func setAudioFile(url: URL) {
 		if url != self.player?.fileURL {

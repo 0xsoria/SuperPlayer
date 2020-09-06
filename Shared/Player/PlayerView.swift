@@ -7,18 +7,26 @@
 
 import SwiftUI
 
+enum PlayerSegment: String {
+	case player = "Player"
+	case info = "Info"
+}
+
 struct PlayerView: View {
 	
 	@ObservedObject var player: Player
 	@State var rateValue: Float = 1.0
 	private let file: URL
+	@State private var segmentIndex = 0
+	@State private var segments: [PlayerSegment] = [.player, .info]
+	
 	
 	init(file: URL, player: Player) {
 		self.player = player
 		self.file = file
 	}
 	
-	var body: some View {
+	var playerView: some View {
 		VStack {
 			HStack {
 				Button(action: {
@@ -66,7 +74,34 @@ struct PlayerView: View {
 			Text(String(format: "Playback speed: %.2fx", self.rateValue))
 		}.padding()
 		.onAppear() {
+			self.player.updaterToggle()
 			self.rateValue = self.player.initialRateValue
+		}
+	}
+	
+	var infoView: some View {
+		List {
+			ForEach(self.player.metadataContent, id: \.self) { item in
+				MetadataRow(metadata: item)
+			}
+		}.onAppear(perform: {
+			self.player.updaterToggle()
+			self.player.showMetadata()
+		})
+	}
+	
+	var body: some View {
+		VStack {
+			Picker(selection: $segmentIndex, label: Text(""), content: {
+				ForEach(0..<self.segments.count) { index in
+					Text(self.segments[index].rawValue).tag(index)
+				}
+			}).pickerStyle(SegmentedPickerStyle())
+		}
+		if self.segmentIndex == 0 {
+			self.playerView
+		} else {
+			self.infoView
 		}
 	}
 	

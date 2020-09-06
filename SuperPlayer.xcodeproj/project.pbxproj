@@ -19,6 +19,10 @@
 		153AA92D24A19504005BDBA1 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AA92B24A19504005BDBA1 /* FilesManager.swift */; };
 		153AA93524A2DCAD005BDBA1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AA93424A2DCAD005BDBA1 /* Player.swift */; };
 		153AA93624A2DCAD005BDBA1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153AA93424A2DCAD005BDBA1 /* Player.swift */; };
+		154A90C6250556900038FCE0 /* MetadataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A90C5250556900038FCE0 /* MetadataRow.swift */; };
+		154A90C7250556900038FCE0 /* MetadataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A90C5250556900038FCE0 /* MetadataRow.swift */; };
+		154A90C9250573CC0038FCE0 /* MetadataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A90C8250573CC0038FCE0 /* MetadataContent.swift */; };
+		154A90CA250573CC0038FCE0 /* MetadataContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A90C8250573CC0038FCE0 /* MetadataContent.swift */; };
 		1583C89B24AD5BFA004108FD /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */; };
 		1583C89C24AD5BFA004108FD /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */; };
 		158CBF2A24FAB31F00CC5A2C /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */; };
@@ -75,6 +79,8 @@
 		1535FB9124AC2877008F1BE3 /* Bridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
 		153AA92B24A19504005BDBA1 /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		153AA93424A2DCAD005BDBA1 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		154A90C5250556900038FCE0 /* MetadataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataRow.swift; sourceTree = "<group>"; };
+		154A90C8250573CC0038FCE0 /* MetadataContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataContent.swift; sourceTree = "<group>"; };
 		1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveDownloadsView.swift; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				15B1307524A7C2B500DC5D4B /* PlayerView.swift */,
 				1583C89A24AD5BFA004108FD /* MiniPlayerView.swift */,
 				158CBF2924FAB31F00CC5A2C /* ProgressBar.swift */,
+				154A90C5250556900038FCE0 /* MetadataRow.swift */,
+				154A90C8250573CC0038FCE0 /* MetadataContent.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 				15F001F124A18E5C0039810A /* SuperPlayerApp.swift in Sources */,
 				1517BD5824A81EAB00991BE5 /* View+Extension.swift in Sources */,
 				15ECAB3E24DEE4A300CBFF0E /* Stream.swift in Sources */,
+				154A90C6250556900038FCE0 /* MetadataRow.swift in Sources */,
 				15AE6DE424BA188B00079CFD /* ActiveDownloadsView.swift in Sources */,
 				56AAF1A424CCC28200956267 /* DownloadService.swift in Sources */,
 				15ECAB4024DEE67F00CBFF0E /* AssetPersistenceManager.swift in Sources */,
@@ -453,6 +462,7 @@
 				15B1307924A7C40600DC5D4B /* FilesRow.swift in Sources */,
 				1516C73F24BBDB96008E69DB /* Track.swift in Sources */,
 				1516C73C24BBD2C0008E69DB /* BottomSheetView.swift in Sources */,
+				154A90C9250573CC0038FCE0 /* MetadataContent.swift in Sources */,
 				15F0020924A18FF30039810A /* FilesView.swift in Sources */,
 				153AA93524A2DCAD005BDBA1 /* Player.swift in Sources */,
 				153AA92C24A19504005BDBA1 /* FilesManager.swift in Sources */,
@@ -465,9 +475,11 @@
 			files = (
 				1583C89C24AD5BFA004108FD /* MiniPlayerView.swift in Sources */,
 				15F001F424A18E5C0039810A /* ContentView.swift in Sources */,
+				154A90CA250573CC0038FCE0 /* MetadataContent.swift in Sources */,
 				15F001F224A18E5C0039810A /* SuperPlayerApp.swift in Sources */,
 				1517BD5924A81EAB00991BE5 /* View+Extension.swift in Sources */,
 				15B1307724A7C2B500DC5D4B /* PlayerView.swift in Sources */,
+				154A90C7250556900038FCE0 /* MetadataRow.swift in Sources */,
 				1535FB9324AC2877008F1BE3 /* Bridge.m in Sources */,
 				15B1307D24A7C66F00DC5D4B /* FilesList.swift in Sources */,
 				15B1307A24A7C40600DC5D4B /* FilesRow.swift in Sources */,
