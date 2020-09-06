@@ -20,7 +20,6 @@ struct PlayerView: View {
 	@State private var segmentIndex = 0
 	@State private var segments: [PlayerSegment] = [.player, .info]
 	
-	
 	init(file: URL, player: Player) {
 		self.player = player
 		self.file = file
@@ -77,6 +76,7 @@ struct PlayerView: View {
 			self.player.updaterToggle()
 			self.rateValue = self.player.initialRateValue
 		}
+		
 	}
 	
 	var infoView: some View {
@@ -85,8 +85,8 @@ struct PlayerView: View {
 				MetadataRow(metadata: item)
 			}
 		}.onAppear(perform: {
-			self.player.updaterToggle()
 			self.player.showMetadata()
+			self.player.updaterToggle()
 		})
 	}
 	
@@ -98,6 +98,7 @@ struct PlayerView: View {
 				}
 			}).pickerStyle(SegmentedPickerStyle())
 		}
+		Spacer()
 		if self.segmentIndex == 0 {
 			self.playerView
 		} else {

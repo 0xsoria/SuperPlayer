@@ -7,13 +7,24 @@
 
 import Foundation
 
-struct MetadataContent: Hashable {
+final class MetadataContent {
 	let key: String
 	let value: String
+	
+	init(key: String, value: String) {
+		self.key = key
+		self.value = value
+	}
 }
 
-extension MetadataContent: Equatable {
+extension MetadataContent: Equatable, Hashable, Identifiable {
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(key)
+		hasher.combine(value)
+	}
+	
 	static func ==(lhs: MetadataContent, rhs: MetadataContent) -> Bool {
-		lhs.key > rhs.key
+		return lhs.hashValue == rhs.hashValue
 	}
 }

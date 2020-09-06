@@ -10,7 +10,7 @@ import AudioMachine
 protocol Play {
 	var currentPosition: Float { get }
 	
-    func setAudioFile(url: URL)
+	func setAudioFile(url: URL)
     func getLenghtOfFile() -> Float?
     func playPause()
     func stop()
@@ -35,7 +35,6 @@ final class Player: NSObject, Play, ObservableObject {
 	var initialRateValue: Float {
 		return self.player?.rateValue ?? 1.0
 	}
-	private let metadata = AMMetadata()
 	
     private override init() {
         //play
@@ -46,12 +45,9 @@ final class Player: NSObject, Play, ObservableObject {
 	}
 	
 	func showMetadata() {
-		if let url = self.player?.fileURL {
-			let data = self.metadata.getFileMetadata(atURLString: url.absoluteString) as? [String: String]
-			
-			guard let metadata = data else { return }
-			//self.metadataContent = self.parseMetadataContent(content: metadata)
-			//return
+		if let data = self.player?.getMetadata() as? [String: String] {
+			self.metadataContent = self.parseMetadataContent(content: data)
+			return
 		}
 		self.metadataContent = []
 	}
@@ -64,7 +60,7 @@ final class Player: NSObject, Play, ObservableObject {
 		return temp
 	}
 	
-    func setAudioFile(url: URL) {
+	func setAudioFile(url: URL) {
 		if url != self.player?.fileURL {
 			self.player?.stopPlayingAudio()
 			self.player = AMAudioPlayer(audioFileURL: url)
