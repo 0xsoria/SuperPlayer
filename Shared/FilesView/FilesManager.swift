@@ -34,6 +34,12 @@ final class FilesManager: ObservableObject, FilesProtocol {
         let url = filesManager.urls(for: .documentDirectory, in: .userDomainMask)
         return url
     }
+	
+	class func savingFolder() -> URL? {
+		let filesManager = FileManager.default
+		let url = filesManager.urls(for: .documentDirectory, in: .userDomainMask)
+		return url.first
+	}
     
     func loadFile(at index: Int) -> Track? {
         self.loadFiles()
@@ -116,8 +122,8 @@ extension FilesManager: ServiceDelegate {
             item.track == file?.track
         }
         if let idx = fileToBeDeleted {
-            //self.downloadsInProgress.remove(at: idx)
-            //self.saveFile(url: url, fileName: temporaryLocation)
+            self.downloadsInProgress.remove(at: idx)
+            self.saveFile(url: url, fileName: temporaryLocation)
         }
     }
     

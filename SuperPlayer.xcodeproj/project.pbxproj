@@ -35,6 +35,11 @@
 		15B1307A24A7C40600DC5D4B /* FilesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307824A7C40600DC5D4B /* FilesRow.swift */; };
 		15B1307C24A7C66F00DC5D4B /* FilesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307B24A7C66F00DC5D4B /* FilesList.swift */; };
 		15B1307D24A7C66F00DC5D4B /* FilesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B1307B24A7C66F00DC5D4B /* FilesList.swift */; };
+		15E9B130250CFEDF00043981 /* FileConversionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B12F250CFEDF00043981 /* FileConversionView.swift */; };
+		15E9B132250D048300043981 /* FilesBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B131250D048300043981 /* FilesBottomSheet.swift */; };
+		15E9B135250D080C00043981 /* FilesConversionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B134250D080C00043981 /* FilesConversionListView.swift */; };
+		15E9B137250D1A2300043981 /* AudioFileConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B136250D1A2300043981 /* AudioFileConverter.swift */; };
+		15E9B139250E4AD100043981 /* AudioFileFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B138250E4AD100043981 /* AudioFileFormats.swift */; };
 		15ECAB3C24DEE46000CBFF0E /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB3B24DEE45F00CBFF0E /* Asset.swift */; };
 		15ECAB3E24DEE4A300CBFF0E /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB3D24DEE4A300CBFF0E /* Stream.swift */; };
 		15ECAB4024DEE67F00CBFF0E /* AssetPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECAB3F24DEE67F00CBFF0E /* AssetPersistenceManager.swift */; };
@@ -89,6 +94,11 @@
 		15B1307524A7C2B500DC5D4B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		15B1307824A7C40600DC5D4B /* FilesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesRow.swift; sourceTree = "<group>"; };
 		15B1307B24A7C66F00DC5D4B /* FilesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesList.swift; sourceTree = "<group>"; };
+		15E9B12F250CFEDF00043981 /* FileConversionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileConversionView.swift; sourceTree = "<group>"; };
+		15E9B131250D048300043981 /* FilesBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesBottomSheet.swift; sourceTree = "<group>"; };
+		15E9B134250D080C00043981 /* FilesConversionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesConversionListView.swift; sourceTree = "<group>"; };
+		15E9B136250D1A2300043981 /* AudioFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileConverter.swift; sourceTree = "<group>"; };
+		15E9B138250E4AD100043981 /* AudioFileFormats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileFormats.swift; sourceTree = "<group>"; };
 		15ECAB3B24DEE45F00CBFF0E /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		15ECAB3D24DEE4A300CBFF0E /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		15ECAB3F24DEE67F00CBFF0E /* AssetPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPersistenceManager.swift; sourceTree = "<group>"; };
@@ -198,6 +208,17 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		15E9B133250D07E000043981 /* FileConversionView */ = {
+			isa = PBXGroup;
+			children = (
+				15E9B12F250CFEDF00043981 /* FileConversionView.swift */,
+				15E9B131250D048300043981 /* FilesBottomSheet.swift */,
+				15E9B134250D080C00043981 /* FilesConversionListView.swift */,
+				15E9B138250E4AD100043981 /* AudioFileFormats.swift */,
+			);
+			path = FileConversionView;
+			sourceTree = "<group>";
+		};
 		15F001C224A18E540039810A = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +247,9 @@
 				1548F2FE24AC2AC900757444 /* View+Extension */,
 				1535FB9124AC2877008F1BE3 /* Bridge.m */,
 				1535FB8F24AC2877008F1BE3 /* iOS-Bridging-Header.h */,
+				15E9B133250D07E000043981 /* FileConversionView */,
 				15AE6DE324BA188B00079CFD /* ActiveDownloadsView.swift */,
+				15E9B136250D1A2300043981 /* AudioFileConverter.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -446,11 +469,14 @@
 				1583C89B24AD5BFA004108FD /* MiniPlayerView.swift in Sources */,
 				15F001F324A18E5C0039810A /* ContentView.swift in Sources */,
 				15F001F124A18E5C0039810A /* SuperPlayerApp.swift in Sources */,
+				15E9B132250D048300043981 /* FilesBottomSheet.swift in Sources */,
 				1517BD5824A81EAB00991BE5 /* View+Extension.swift in Sources */,
 				15ECAB3E24DEE4A300CBFF0E /* Stream.swift in Sources */,
 				154A90C6250556900038FCE0 /* MetadataRow.swift in Sources */,
 				15AE6DE424BA188B00079CFD /* ActiveDownloadsView.swift in Sources */,
+				15E9B130250CFEDF00043981 /* FileConversionView.swift in Sources */,
 				56AAF1A424CCC28200956267 /* DownloadService.swift in Sources */,
+				15E9B135250D080C00043981 /* FilesConversionListView.swift in Sources */,
 				15ECAB4024DEE67F00CBFF0E /* AssetPersistenceManager.swift in Sources */,
 				15B1307624A7C2B500DC5D4B /* PlayerView.swift in Sources */,
 				15AE6DE624BA286600079CFD /* DownloadProgress.swift in Sources */,
@@ -460,8 +486,10 @@
 				15B1307C24A7C66F00DC5D4B /* FilesList.swift in Sources */,
 				15ECAB4224DEF15700CBFF0E /* StreamListManager.swift in Sources */,
 				15B1307924A7C40600DC5D4B /* FilesRow.swift in Sources */,
+				15E9B137250D1A2300043981 /* AudioFileConverter.swift in Sources */,
 				1516C73F24BBDB96008E69DB /* Track.swift in Sources */,
 				1516C73C24BBD2C0008E69DB /* BottomSheetView.swift in Sources */,
+				15E9B139250E4AD100043981 /* AudioFileFormats.swift in Sources */,
 				154A90C9250573CC0038FCE0 /* MetadataContent.swift in Sources */,
 				15F0020924A18FF30039810A /* FilesView.swift in Sources */,
 				153AA93524A2DCAD005BDBA1 /* Player.swift in Sources */,

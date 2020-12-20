@@ -11,7 +11,10 @@ import SwiftUI
 struct SuperPlayerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			TabView {
+				ContentView()
+				FileConversionView()
+			}
         }
     }
 }

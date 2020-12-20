@@ -14,7 +14,6 @@ protocol Play {
     func getLenghtOfFile() -> Float?
     func playPause()
     func stop()
-    func isPlaying() -> Bool
     func seek(to time: Float)
 }
 
@@ -26,6 +25,8 @@ final class Player: NSObject, Play, ObservableObject {
 	@Published var timePlayed = "0:00"
 	@Published var timeRemaining = "0:00"
 	@Published var metadataContent = [MetadataContent]()
+	@Published var isPlaying = false
+	
 	var rateValue: Float = 1.0 {
 		didSet {
 			self.player?.rateValue = rateValue
@@ -78,20 +79,15 @@ final class Player: NSObject, Play, ObservableObject {
     func playPause() {
         if let player = self.player {
             player.setPlayOrPause()
+			self.isPlaying = player.isPlaying()
         }
     }
     
     func stop() {
         if let player = self.player {
             player.stopPlayingAudio()
+			self.isPlaying = false
         }
-    }
-    
-    func isPlaying() -> Bool {
-        if let player = self.player {
-            return player.isPlaying()
-        }
-        return false
     }
     
     func seek(to time: Float) {

@@ -7,9 +7,13 @@
 
 import SwiftUI
 
-enum PlayerSegment: String {
+enum PlayerSegment: String, CaseIterable, Identifiable {
 	case player = "Player"
 	case info = "Info"
+	
+	var id: String {
+		self.rawValue
+	}
 }
 
 struct PlayerView: View {
@@ -17,8 +21,7 @@ struct PlayerView: View {
 	@ObservedObject var player: Player
 	@State var rateValue: Float = 1.0
 	private let file: URL
-	@State private var segmentIndex = 0
-	@State private var segments: [PlayerSegment] = [.player, .info]
+	@State private var segmentIndex = PlayerSegment.player
 	
 	init(file: URL, player: Player) {
 		self.player = player
@@ -36,14 +39,25 @@ struct PlayerView: View {
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 				}).frame(width: 50, height: 50, alignment: .center)
-				Button(action: {
-					self.playPause()
-				}, label: {
-					Image(systemName: "play.fill")
-						.resizable()
-						.aspectRatio(contentMode: .fit)
-						.foregroundColor(.black)
-				}).frame(width: 50, height: 50, alignment: .center)
+				if !self.player.isPlaying {
+					Button(action: {
+						self.playPause()
+					}, label: {
+						Image(systemName: "play.fill")
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.foregroundColor(.black)
+					}).frame(width: 50, height: 50, alignment: .center)
+				} else {
+					Button(action: {
+						self.playPause()
+					}, label: {
+						Image(systemName: "pause.fill")
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.foregroundColor(.black)
+					}).frame(width: 50, height: 50, alignment: .center)
+				}
 				Button(action: self.stopPlayback, label: {
 					Image(systemName: "stop.fill")
 						.resizable()
@@ -71,6 +85,7 @@ struct PlayerView: View {
 				self.player.rateValue = rateValue
 			}
 			Text(String(format: "Playback speed: %.2fx", self.rateValue))
+			Spacer()
 		}.padding()
 		.onAppear() {
 			self.player.updaterToggle()
@@ -93,13 +108,13 @@ struct PlayerView: View {
 	var body: some View {
 		VStack {
 			Picker(selection: $segmentIndex, label: Text(""), content: {
-				ForEach(0..<self.segments.count) { index in
-					Text(self.segments[index].rawValue).tag(index)
+				ForEach(PlayerSegment.allCases) { index in
+					Text(index.rawValue).tag(index)
 				}
 			}).pickerStyle(SegmentedPickerStyle())
 		}
 		Spacer()
-		if self.segmentIndex == 0 {
+		if self.segmentIndex == .player {
 			self.playerView
 		} else {
 			self.infoView
