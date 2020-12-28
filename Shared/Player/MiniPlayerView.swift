@@ -9,28 +9,34 @@ import SwiftUI
 
 struct MiniPlayerView: View {
     
-    var playPause: () -> Void
-    var back: () -> Void
-    var forward: () -> Void
+	@EnvironmentObject var player: Player
     
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             Spacer()
-            Button(action: action, label: {
+			Button(action: self.backward, label: {
                 Image(systemName: "gobackward.10")
                     .resizable().aspectRatio(contentMode: .fit)
                     .foregroundColor(.black)
             })
             Spacer()
             Spacer()
-            Button(action: action, label: {
-                Image(systemName: "play.fill")
-                    .resizable().aspectRatio(contentMode: .fit)
-                    .foregroundColor(.black)
-            })
+			if self.player.isPlaying {
+				Button(action: self.play, label: {
+					Image(systemName: "pause.fill")
+						.resizable().aspectRatio(contentMode: .fit)
+						.foregroundColor(.black)
+				})
+			} else {
+				Button(action: self.play, label: {
+					Image(systemName: "play.fill")
+						.resizable().aspectRatio(contentMode: .fit)
+						.foregroundColor(.black)
+				})
+			}
             Spacer()
             Spacer()
-            Button(action: action, label: {
+			Button(action: self.forward, label: {
                 Image(systemName: "goforward.10")
                     .resizable().aspectRatio(contentMode: .fit)
                     .foregroundColor(.black)
@@ -43,13 +49,21 @@ struct MiniPlayerView: View {
         .cornerRadius(20)
     }
     
-    func action() {
-        
+    func play() {
+		self.player.playPause()
     }
+	
+	func forward() {
+		self.player.seek(to: 10.0)
+	}
+	
+	func backward() {
+		self.player.seek(to: -10.0)
+	}
 }
 
 struct MiniPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        MiniPlayerView(playPause: {}, back: {}, forward: {})
+        MiniPlayerView()
     }
 }

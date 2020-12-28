@@ -12,6 +12,7 @@ extension View {
     func showAlertWithTextField(with title: String, message: String?, placeholder: String, actionTitle: String, cancelTitle: String, action: @escaping ((String) -> Void)) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField() { textField in
+			textField.isUserInteractionEnabled = true
             textField.placeholder = placeholder
         }
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { _ in

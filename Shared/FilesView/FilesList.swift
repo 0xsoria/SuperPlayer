@@ -11,18 +11,17 @@ struct FilesList: View {
     
     let files: [Track]
     var onDelete: ((Int) -> Void)?
-    let player: Player
+	@EnvironmentObject var player: Player
     
-    init(files: [Track], onDelete: ((Int) -> Void)?, player: Player) {
+    init(files: [Track], onDelete: ((Int) -> Void)?) {
         self.files = files
         self.onDelete = onDelete
-        self.player = player
     }
     
     var body: some View {
         List {
             ForEach(self.files, id: \.self) { item in
-                NavigationLink(destination: PlayerView(file: item.url, player: self.player)) {
+				NavigationLink(destination: PlayerView(file: item.url).environmentObject(self.player)) {
                     FilesRow(fileName: item.name)
                 }
             }.onDelete { idx in
@@ -46,7 +45,6 @@ struct FilesList_Previews: PreviewProvider {
         FilesList(files: [Track(name: "atp.mp3",
                                 artist: "atp",
                                 url: URL(string: "")!)],
-                  onDelete: nil,
-                  player: Player.shared)
+                  onDelete: nil)
     }
 }

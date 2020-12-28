@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DownloadProgress: View {
     
-    @ObservedObject var download: Download
+    var download: Download
     
     init(download: Download) {
         self.download = download
@@ -30,12 +30,13 @@ struct DownloadProgress: View {
             Text(String(format: "%.0f %%", min(self.download.progress, 1.0)*100.0))
                 .font(.caption2)
                 .bold()
-        }
+		}
     }
 }
 
 struct DownloadProgress_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadProgress(download: Download(track: Track(name: String(), artist: String(), url: URL(string: String())!)))
+//        DownloadProgress(download: Download(track: Track(name: String(), artist: String(), url: URL(string: String())!)))
+		Text("")
     }
 }

@@ -9,18 +9,18 @@ import SwiftUI
 
 struct ActiveDownloadsView: View {
     
-    var downloads: [Download] = []
+	@EnvironmentObject var downloadManager: FilesManager
     var action: (() -> Void)?
     
     var body: some View {
         
-        if !self.downloads.isEmpty {
+        if !self.downloadManager.downloadsInProgress.isEmpty {
             List {
-                ForEach(downloads, id: \.progress) { item in
+				ForEach(downloadManager.downloadsInProgress, id: \.progress) { item in
                     HStack {
                         Text(item.track.name)
                         Spacer()
-                        DownloadProgress(download: item)
+						DownloadProgress(download: item)
                     }
                 }
             }
@@ -32,6 +32,6 @@ struct ActiveDownloadsView: View {
 
 struct ActiveDownloadsView_Previews: PreviewProvider {
     static var previews: some View {
-        ActiveDownloadsView(downloads: [])
+		ActiveDownloadsView().environmentObject(FilesManager())
     }
 }

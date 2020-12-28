@@ -18,13 +18,12 @@ enum PlayerSegment: String, CaseIterable, Identifiable {
 
 struct PlayerView: View {
 	
-	@ObservedObject var player: Player
+	@EnvironmentObject var player: Player
 	@State var rateValue: Float = 1.0
 	private let file: URL
 	@State private var segmentIndex = PlayerSegment.player
 	
-	init(file: URL, player: Player) {
-		self.player = player
+	init(file: URL) {
 		self.file = file
 	}
 	
@@ -144,6 +143,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
 	static var previews: some View {
-		PlayerView(file: URL(string: String())!, player: Player.shared)
+		PlayerView(file: URL(string: "www.apple.com")!)
 	}
 }
